@@ -11,7 +11,7 @@ import java.util.logging.Logger;
     mappedName = "QUEUE/MyQueue",
     activationConfig = { 
         @ActivationConfigProperty(propertyName = "user", propertyValue="RootManageSharedAccessKey"),
-        @ActivationConfigProperty(propertyName ="password", propertyValue="YhAJGyq4HsqADXFdgNm8S01xEXKvdk5QClpTqV7wIa8="),
+        @ActivationConfigProperty(propertyName ="password", propertyValue="xxxxxxxxxxxx"),
         @ActivationConfigProperty(propertyName = "jndiParameters", propertyValue="java.naming.factory.initial=org.apache.qpid.jms.jndi.JmsInitialContextFactory;connectionfactory.SBCF=amqps://gerb-tomee.servicebus.windows.net;queue.QUEUE=MyQueue"),
         @ActivationConfigProperty(propertyName = "connectionFactory", propertyValue = "SBCF"),
         @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue") 
