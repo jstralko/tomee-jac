@@ -8,4 +8,4 @@ target
 .classpath
 .vscode
 bin
-rar-libs
+rar-libs/*.jar
