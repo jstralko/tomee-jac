@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<name>app-ear</name>
+	<artifactId>app-ear</artifactId>
+	<version>1.0</version>
+
+	<parent>
+		<artifactId>app</artifactId>
+		<groupId>local.gerb</groupId>
+		<version>1.0</version>
+	</parent>
+
+	<packaging>ear</packaging>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ear-plugin</artifactId>
+                <version>2.5</version>
+				<configuration>
+          			<defaultLibBundleDir>lib</defaultLibBundleDir>
+					<modules>
+          				<rarModule>
+							<groupId>local.gerb</groupId>
+							<artifactId>app-rar</artifactId>
+						</rarModule>
+						<ejbModule>
+							<groupId>local.gerb</groupId>
+							<artifactId>app-mdbs</artifactId>
+						</ejbModule>
+						<webModule>
+							<groupId>local.gerb</groupId>
+							<artifactId>app-webapp1</artifactId>
+							<contextRoot>/webapp1</contextRoot>
+						</webModule>
+					</modules>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+    <dependency>
+			<groupId>local.gerb</groupId>
+			<artifactId>app-rar</artifactId>
+			<version>1.0</version>
+			<type>rar</type>
+		</dependency>
+		<dependency>
+			<groupId>local.gerb</groupId>
+			<artifactId>app-mdbs</artifactId>
+			<version>1.0</version>
+			<type>ejb</type>
+		</dependency>
+				<dependency>
+			<groupId>local.gerb</groupId>
+			<artifactId>app-webapp1</artifactId>
+			<version>1.0</version>
+			<type>war</type>
+		</dependency>
+	</dependencies>
+</project>

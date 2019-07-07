@@ -1,0 +1,11 @@
+.DS_Store
+*~
+*.iml
+.idea
+.project
+.settings
+target
+.classpath
+.vscode
+bin
+rar-libs

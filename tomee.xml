@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tomee>
+  <!-- see http://tomee.apache.org/containers-and-resources.html -->
+
+  <!-- activate next line to be able to deploy applications in apps -->
+  <Deployments dir="apps" />
+
+  <Resource id="MyJmsResourceAdapter" type="GenericJMSRA" provider="com.wk.ra:genericra">
+       ServerUrl = tcp://172.17.0.3:61616
+  </Resource>
+
+   <Resource id="MyJmsConnectionFactory" type="javax.jms.ConnectionFactory" provider="com.wk.ra:genericra">
+       ResourceAdapter = MyJmsResourceAdapter
+   </Resource>
+
+   <Container id="MyJmsMdbContainer" ctype="MESSAGE">
+       ResourceAdapter = MyJmsResourceAdapter
+   </Container>
+
+   <Resource id="SBCF/MyQueue" type="javax.jms.Queue"/>
+   <Resource id="MyTopic" type="javax.jms.Topic"/>
+
+
+  
+</tomee>

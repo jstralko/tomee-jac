@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ServiceJar>
+  <ServiceProvider
+      id="genericra"
+      service="Resource"
+      types="GenericJMSRA"
+      class-name="org.jboss.resource.adapter.jms.JmsResourceAdapter">
+  </ServiceProvider>
+
+  <ServiceProvider
+      id="ConnectionFactory"
+      service="Resource"
+      types="javax.jms.ConnectionFactory, javax.jms.QueueConnectionFactory, javax.jms.TopicConnectionFactory, QueueConnectionFactory, TopicConnectionFactory"
+      class-name="org.jboss.resource.adapter.jms.JmsManagedConnectionFactory">
+  </ServiceProvider>
+
+<!--
+  <ServiceProvider
+      id="Queue"
+      service="Resource"
+      types="javax.jms.Queue, Queue"
+      class-name="com.sun.genericra.outbound.QueueProxy">
+  </ServiceProvider>
+
+  <ServiceProvider
+      id="Topic"
+      service="Resource"
+      types="javax.jms.Topic, Topic"
+      class-name="com.sun.genericra.outbound.TopicProxy">
+  </ServiceProvider>
+  -->
+
+</ServiceJar>
