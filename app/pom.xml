@@ -27,8 +27,8 @@
 
 
 	<properties>
-		<qpid-jms-version>[0.27.0,]</qpid-jms-version>
-		<qpid-proton-j>[0.23.0,]</qpid-proton-j>
+		<qpid-jms-version>0.44.0</qpid-jms-version>
+		<qpid-proton-j>0.33.1</qpid-proton-j>
 		<generic-jms-ra-version>2.0.1.Final</generic-jms-ra-version>
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
