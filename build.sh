@@ -11,10 +11,10 @@ rm rar-libs/*.jar 2>/dev/null
 #Wipe out old rar
 rm *.rar 2>/dev/null
 
-pushd ../generic-jms-ra
+pushd generic-jms-ra
 mvn clean install -DskipTests
 [ $? -eq 0 ] || exit $?;
-cp -v generic-jms-ra-jar/target/*Final.jar ../tomee-jac/rar-libs
+cp -v generic-jms-ra-jar/target/*Final.jar ../rar-libs
 popd
 
 pushd azureservicebus-jms-ra

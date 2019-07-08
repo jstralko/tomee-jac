@@ -11,3 +11,4 @@ bin
 rar-libs/*.jar
 wk-amsp.jar
 *.rar
+.factorypath
