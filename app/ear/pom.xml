@@ -23,10 +23,6 @@
 				<configuration>
           			<defaultLibBundleDir>lib</defaultLibBundleDir>
 					<modules>
-          				<rarModule>
-							<groupId>local.gerb</groupId>
-							<artifactId>app-rar</artifactId>
-						</rarModule>
 						<ejbModule>
 							<groupId>local.gerb</groupId>
 							<artifactId>app-mdbs</artifactId>
@@ -43,12 +39,6 @@
 	</build>
 
 	<dependencies>
-    <dependency>
-			<groupId>local.gerb</groupId>
-			<artifactId>app-rar</artifactId>
-			<version>1.0</version>
-			<type>rar</type>
-		</dependency>
 		<dependency>
 			<groupId>local.gerb</groupId>
 			<artifactId>app-mdbs</artifactId>

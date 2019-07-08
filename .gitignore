@@ -10,3 +10,4 @@ target
 bin
 rar-libs/*.jar
 wk-amsp.jar
+*.rar

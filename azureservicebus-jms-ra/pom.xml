@@ -2,29 +2,30 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-	<parent>
-		<artifactId>app</artifactId>
-		<groupId>local.gerb</groupId>
-		<version>1.0</version>
-	</parent>
 
-  <artifactId>app-rar</artifactId>
-  <version>1.0</version>
+  <groupId>com.wk</groupId>
+  <artifactId>azureserviebus-jms-ra</artifactId>
+  <version>1.0.1</version>
   <packaging>rar</packaging>
 
   <name>AMQP 1.0 resource adapter</name>
+
+  	<properties>
+      <qpid-jms-version>0.44.0</qpid-jms-version>
+      <qpid-proton-j>0.33.1</qpid-proton-j>
+      <generic-jms-ra-version>2.0.1.Final</generic-jms-ra-version>
+
+      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      
+      <maven.compiler.source>1.8</maven.compiler.source>
+      <maven.compiler.target>1.8</maven.compiler.target>
+  	</properties>
 
   <dependencies>
     <dependency>
       <groupId>org.apache.qpid</groupId>
       <artifactId>qpid-jms-client</artifactId>
       <version>${qpid-jms-version}</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.qpid</groupId>
-      <artifactId>proton-j</artifactId>
-      <version>${qpid-proton-j}</version>
       <scope>provided</scope>
     </dependency>
     <dependency>

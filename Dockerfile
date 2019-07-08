@@ -22,7 +22,6 @@
  #-----end of TomEE Base install----------------
 
 COPY tomee.xml /usr/local/tomee/conf
-COPY context.xml /usr/local/tomee/conf
 COPY system.properties /usr/local/tomee/conf
 COPY wk-amsp.jar /usr/local/tomee/lib
 
@@ -56,6 +55,7 @@ ADD https://repo1.maven.org/maven2/io/netty/netty-transport-native-kqueue/$NETTY
 
 RUN mkdir /usr/local/tomee/apps
 
+COPY ra.rar /usr/local/tomee/apps
 COPY app/ear/target/*.ear /usr/local/tomee/apps
 
  #Debug
