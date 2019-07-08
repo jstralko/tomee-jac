@@ -25,12 +25,16 @@
 					<modules>
 						<ejbModule>
 							<groupId>local.gerb</groupId>
+							<artifactId>app-ejbs</artifactId>
+						</ejbModule>
+						<ejbModule>
+							<groupId>local.gerb</groupId>
 							<artifactId>app-mdbs</artifactId>
 						</ejbModule>
 						<webModule>
 							<groupId>local.gerb</groupId>
 							<artifactId>app-webapp1</artifactId>
-							<contextRoot>/webapp1</contextRoot>
+							<contextRoot>/web</contextRoot>
 						</webModule>
 					</modules>
 				</configuration>
@@ -41,11 +45,17 @@
 	<dependencies>
 		<dependency>
 			<groupId>local.gerb</groupId>
+			<artifactId>app-ejbs</artifactId>
+			<version>1.0</version>
+			<type>ejb</type>
+		</dependency>
+		<dependency>
+			<groupId>local.gerb</groupId>
 			<artifactId>app-mdbs</artifactId>
 			<version>1.0</version>
 			<type>ejb</type>
 		</dependency>
-				<dependency>
+		<dependency>
 			<groupId>local.gerb</groupId>
 			<artifactId>app-webapp1</artifactId>
 			<version>1.0</version>
