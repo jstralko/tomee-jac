@@ -6,6 +6,7 @@ mvn install
 popd
 
 #Wipe out old jars
+rm *.jar
 rm rar-libs/*.jar 2>/dev/null
 
 #Wipe out old rar
@@ -23,7 +24,7 @@ mvn clean install
 cp -v target/*.rar ../ra.rar
 popd
 
-./build_wkamsp_jar.sh
+jar -cvf wk-amsp.jar META-INF
 
 docker stop $(docker ps | grep tomee-jac | tail -n 1 | awk '{ print $1 }')
 docker build -t tomee-jac .
