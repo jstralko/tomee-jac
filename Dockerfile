@@ -27,7 +27,7 @@ COPY amqps-service-info.jar /usr/local/tomee/lib
 COPY setenv.sh /usr/local/tomee/bin
 
 # Should be generic-jms-ra (we have manually changes)
-COPY rar-libs/*.jar /usr/local/tomee/lib/
+COPY generic-jms-ra/generic-jms-ra-jar/target/*Final.jar /usr/local/tomee/lib/
 
 #Dependences for the Generic JMS RA
 ADD https://repo1.maven.org/maven2/org/jboss/logging/jboss-logging/3.3.1.Final/jboss-logging-3.3.1.Final.jar /usr/local/tomee/lib
@@ -54,7 +54,7 @@ ADD https://repo1.maven.org/maven2/io/netty/netty-transport-native-kqueue/$NETTY
 
 RUN mkdir /usr/local/tomee/apps
 
-COPY ra.rar /usr/local/tomee/apps
+COPY azureservicebus-jms-ra/target/*.rar /usr/local/tomee/apps
 COPY app/ear/target/*.ear /usr/local/tomee/apps
 
  #Debug
