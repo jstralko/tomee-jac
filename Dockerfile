@@ -26,35 +26,16 @@ COPY system.properties /usr/local/tomee/conf
 COPY amqps-service-info.jar /usr/local/tomee/lib
 COPY setenv.sh /usr/local/tomee/bin
 
-# Should be generic-jms-ra (we have manually changes)
-COPY generic-jms-ra/generic-jms-ra-jar/target/*Final.jar /usr/local/tomee/lib/
+# Our custom Resource Adapter to work with TomEE and Azure
+COPY az-servicebus-resource-adapter/ra/target/az-amqps-ra*.jar /usr/local/tomee/lib/
 
-#Dependences for the Generic JMS RA
-ADD https://repo1.maven.org/maven2/org/jboss/logging/jboss-logging/3.3.1.Final/jboss-logging-3.3.1.Final.jar /usr/local/tomee/lib
-ADD https://repo1.maven.org/maven2/org/slf4j/slf4j-api/1.7.25/slf4j-api-1.7.25.jar /urs/local/tomee/lib
-
-ARG PROTONJ_VERSION=0.33.1
-ADD https://repo1.maven.org/maven2/org/apache/qpid/proton-j/$PROTONJ_VERSION/proton-j-$PROTONJ_VERSION.jar /usr/local/tomee/lib
-
-ARG QPID_JMS_CLIENT_VERSION=0.44.0
-ADD https://repo1.maven.org/maven2/org/apache/qpid/qpid-jms-client/$QPID_JMS_CLIENT_VERSION/qpid-jms-client-$QPID_JMS_CLIENT_VERSION.jar /usr/local/tomee/lib
-
-ARG NETTY_VERSION=4.1.37.Final
-
-#Pull in the Netty Deps
-ADD https://repo1.maven.org/maven2/io/netty/netty-handler/$NETTY_VERSION/netty-handler-$NETTY_VERSION.jar /usr/local/tomee/lib
-ADD https://repo1.maven.org/maven2/io/netty/netty-buffer/$NETTY_VERSION/netty-buffer-$NETTY_VERSION.jar /usr/local/tomee/lib
-ADD https://repo1.maven.org/maven2/io/netty/netty-codec/$NETTY_VERSION/netty-codec-$NETTY_VERSION.jar /usr/local/tomee/lib
-ADD https://repo1.maven.org/maven2/io/netty/netty-codec-http/$NETTY_VERSION/netty-codec-http-$NETTY_VERSION.jar /usr/local/tomee/lib
-ADD https://repo1.maven.org/maven2/io/netty/netty-common/$NETTY_VERSION/netty-common-$NETTY_VERSION.jar /usr/local/tomee/lib
-ADD https://repo1.maven.org/maven2/io/netty/netty-resolver/$NETTY_VERSION/netty-resolver-$NETTY_VERSION.jar /usr/local/tomee/lib
-ADD https://repo1.maven.org/maven2/io/netty/netty-transport/$NETTY_VERSION/netty-transport-$NETTY_VERSION.jar /usr/local/tomee/lib
-ADD https://repo1.maven.org/maven2/io/netty/netty-transport-native-epoll/$NETTY_VERSION/netty-transport-native-epoll-$NETTY_VERSION.jar /usr/local/tomee/lib
-ADD https://repo1.maven.org/maven2/io/netty/netty-transport-native-kqueue/$NETTY_VERSION/netty-transport-native-kqueue-$NETTY_VERSION.jar /usr/local/tomee/lib
+#Dependences for our JMS RA
+COPY az-servicebus-resource-adapter/ra/target/lib/*.jar /usr/local/tomee/lib/
 
 RUN mkdir /usr/local/tomee/apps
 
-COPY azureservicebus-jms-ra/target/*.rar /usr/local/tomee/apps
+#RAR - wires in the RA in the TomEE
+COPY az-servicebus-resource-adapter/rar/target/*.rar /usr/local/tomee/apps
 COPY app/ear/target/*.ear /usr/local/tomee/apps
 
  #Debug

@@ -8,13 +8,7 @@ popd
 #Wipe out old jar
 rm amqps-service-info.jar 2>/dev/null
 
-pushd generic-jms-ra
-#TODO: fix so we dont have to skipTests
-mvn clean install -DskipTests
-[ $? -eq 0 ] || exit $?;
-popd
-
-pushd azureservicebus-jms-ra
+pushd az-servicebus-resource-adapter
 mvn clean install
 [ $? -eq 0 ] || exit $?;
 popd

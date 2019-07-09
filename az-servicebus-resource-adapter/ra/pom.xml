@@ -2,24 +2,21 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.jboss.genericjms</groupId>
-        <artifactId>generic-jms-ra-pom</artifactId>
-        <version>2.0.1.Final</version>
+        <groupId>com.wk</groupId>
+        <artifactId>az-servicebus-resource-adapter</artifactId>
+        <version>1.0.2</version>
     </parent>
 
-    <artifactId>generic-jms-ra-jar</artifactId>
+    <artifactId>az-amqps-ra</artifactId>
     <packaging>jar</packaging>
-    <name>JBoss Generic JMS RA JAR</name>
+    <name>AMQPS JMS RA JAR for TomEE</name>
 
     <dependencies>
         <dependency>
             <groupId>org.jboss.logging</groupId>
-            <artifactId>jboss-logging-processor</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.logging</groupId>
             <artifactId>jboss-logging</artifactId>
         </dependency>
+        
         <dependency>
             <groupId>org.jboss.spec.javax.resource</groupId>
             <artifactId>jboss-connector-api_1.7_spec</artifactId>
@@ -41,6 +38,12 @@
             <artifactId>jboss-transaction-api_1.2_spec</artifactId>
             <scope>provided</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.apache.qpid</groupId>
+            <artifactId>qpid-jms-client</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -50,30 +53,33 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.1</version>
                 <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
                     <debug>true</debug>
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.10.1</version>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.10</version>
                 <executions>
                     <execution>
-                        <id>attach-javadocs</id>
+                        <id>copy-dependencies</id>
+                        <phase>prepare-package</phase>
                         <goals>
-                            <goal>jar</goal>
+                            <goal>copy-dependencies</goal>
                         </goals>
                         <configuration>
-                            <additionalparam>-Xdoclint:none</additionalparam>
+                            <outputDirectory>${project.build.directory}/lib</outputDirectory>
+                            <overWriteReleases>false</overWriteReleases>
+                            <overWriteSnapshots>false</overWriteSnapshots>
+                            <overWriteIfNewer>true</overWriteIfNewer>
+                            <excludeScope>provided</excludeScope>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
         </plugins>
     </build>
-
-
 </project>
