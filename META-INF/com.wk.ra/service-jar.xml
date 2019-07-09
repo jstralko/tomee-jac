@@ -14,20 +14,4 @@
       class-name="org.jboss.resource.adapter.jms.JmsManagedConnectionFactory">
   </ServiceProvider>
 
-<!--
-  <ServiceProvider
-      id="Queue"
-      service="Resource"
-      types="javax.jms.Queue, Queue"
-      class-name="com.sun.genericra.outbound.QueueProxy">
-  </ServiceProvider>
-
-  <ServiceProvider
-      id="Topic"
-      service="Resource"
-      types="javax.jms.Topic, Topic"
-      class-name="com.sun.genericra.outbound.TopicProxy">
-  </ServiceProvider>
-  -->
-
 </ServiceJar>

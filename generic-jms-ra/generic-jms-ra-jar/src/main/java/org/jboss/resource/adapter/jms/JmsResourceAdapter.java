@@ -59,7 +59,7 @@ public class JmsResourceAdapter implements ResourceAdapter {
     private String username;
     private String password;
     private String initialContext;
-    private String connectionFactory; //not used!
+    private String connectionFactory;
 
 
     /**

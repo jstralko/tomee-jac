@@ -29,17 +29,13 @@ public class Sender {
 
     @PostConstruct
     public void onPostConstruct() {
-        String url = System.getProperty("SERVICE_BUS_URL");
-        if (url == null) {
-            throw new EJBException("No Service URL found!");
+        String jndiParameters = System.getProperty("JNDI_PARAMETERS");
+        if (jndiParameters == null) {
+            throw new EJBException("No JNDI_PARAMETERS found!");
         }
 
-        Properties props = new Properties();
-        props.put("java.naming.factory.initial", "org.apache.qpid.jms.jndi.JmsInitialContextFactory");
-        props.put("connectionfactory.SBCF", String.format("amqps://%s", url));
-        props.put("queue.QUEUE", "MyQueue");
-
         try {
+            Properties props = org.jboss.resource.adapter.jms.inflow.JmsActivation.convertStringToProperties(jndiParameters);
             InitialContext ic = new InitialContext(props);
 
             connectionFactory = (ConnectionFactory)ic.lookup("SBCF");

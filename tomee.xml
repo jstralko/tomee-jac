@@ -5,12 +5,7 @@
   <!-- activate next line to be able to deploy applications in apps -->
   <Deployments dir="apps" />
 
-  <Resource id="amqpsRA" type="GenericJMSRA" provider="com.wk.ra:genericra">
-    UserName=RootManageSharedAccessKey
-    Password=xxxxxxx
-    connectionfactory=SBCF
-    InitialContext=java.naming.factory.initial\=org.apache.qpid.jms.jndi.JmsInitialContextFactory;connectionfactory.SBCF\=amqps://gerb-tomee.servicebus.windows.net;queue.QUEUE\=MyQueue
-  </Resource>
+  <Resource id="amqpsRA" type="GenericJMSRA" provider="com.wk.ra:genericra" />
 
    <Container id="mdbContainer" ctype="MESSAGE">
        ResourceAdapter = amqpsRA

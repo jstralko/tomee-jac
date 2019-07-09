@@ -24,6 +24,7 @@
 COPY tomee.xml /usr/local/tomee/conf
 COPY system.properties /usr/local/tomee/conf
 COPY wk-amsp.jar /usr/local/tomee/lib
+COPY setenv.sh /usr/local/tomee/bin
 
 # Should be generic-jms-ra (we have manually changes)
 COPY rar-libs/*.jar /usr/local/tomee/lib/
@@ -32,14 +33,12 @@ COPY rar-libs/*.jar /usr/local/tomee/lib/
 ADD https://repo1.maven.org/maven2/org/jboss/logging/jboss-logging/3.3.1.Final/jboss-logging-3.3.1.Final.jar /usr/local/tomee/lib
 ADD https://repo1.maven.org/maven2/org/slf4j/slf4j-api/1.7.25/slf4j-api-1.7.25.jar /urs/local/tomee/lib
 
-#ARG PROTONJ_VERSION=0.27.3
 ARG PROTONJ_VERSION=0.33.1
 ADD https://repo1.maven.org/maven2/org/apache/qpid/proton-j/$PROTONJ_VERSION/proton-j-$PROTONJ_VERSION.jar /usr/local/tomee/lib
 
 ARG QPID_JMS_CLIENT_VERSION=0.44.0
 ADD https://repo1.maven.org/maven2/org/apache/qpid/qpid-jms-client/$QPID_JMS_CLIENT_VERSION/qpid-jms-client-$QPID_JMS_CLIENT_VERSION.jar /usr/local/tomee/lib
 
-#ARG NETTY_VERSION=4.1.16.Final
 ARG NETTY_VERSION=4.1.37.Final
 
 #Pull in the Netty Deps

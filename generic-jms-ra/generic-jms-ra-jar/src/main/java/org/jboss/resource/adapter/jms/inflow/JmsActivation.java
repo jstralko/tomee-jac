@@ -212,6 +212,20 @@ public class JmsActivation implements ExceptionListener {
         return isTopic;
     }
 
+    private static boolean isSet(String str) {
+        return str != null && str.length() > 0;
+    }
+
+    private static String get(String str, String envVar) {
+        if (!isSet(str)) {
+            str = System.getProperty(envVar);
+            if (!isSet(str)) {
+                log.error(String.format("no value set for %s", envVar));
+            }
+        }
+        return str;
+    }
+
     /**
      * Start the activation
      *
@@ -219,12 +233,17 @@ public class JmsActivation implements ExceptionListener {
      */
     public void start(String username, String password, String initialContext, String connectionFactory) throws ResourceException {
         deliveryActive.set(true);
-        this.spec.setUser(username);
-        this.spec.setPassword(password);
-        this.spec.setResourceAdapterJndiParameters(initialContext);
-        this.spec.setConnectionFactory(connectionFactory);
+
+        this.spec.setUser(get(username, "USER_NAME"));
+        this.spec.setPassword(get(password, "PASSWORD"));
+        this.spec.setResourceAdapterJndiParameters(get(initialContext, "JNDI_PARAMETERS"));
+        this.spec.setConnectionFactory(get(connectionFactory, "CONNECTION_FACTORY"));
 
         ra.getWorkManager().scheduleWork(new SetupActivation());
+    }
+
+    public void start() throws ResourceException {
+        start(null, null, null, null);
     }
 
     /**
@@ -346,7 +365,7 @@ public class JmsActivation implements ExceptionListener {
         return convertStringToContext(jndiParameters, null);
     }
 
-    static Properties convertStringToProperties(String jndiParameters) {
+    public static Properties convertStringToProperties(String jndiParameters) {
         Properties properties = new Properties();
         if (jndiParameters != null) {
             String[] elements = jndiParameters.split(";");
