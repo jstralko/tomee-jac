@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ServiceJar>
   <ServiceProvider
-      id="genericra"
+      id="amqpsra"
       service="Resource"
-      types="GenericJMSRA"
+      types="AMQPSJMSRA"
       class-name="org.jboss.resource.adapter.jms.JmsResourceAdapter">
   </ServiceProvider>
 

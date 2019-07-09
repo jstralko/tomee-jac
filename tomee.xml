@@ -5,7 +5,7 @@
   <!-- activate next line to be able to deploy applications in apps -->
   <Deployments dir="apps" />
 
-  <Resource id="amqpsRA" type="GenericJMSRA" provider="com.wk.ra:genericra" />
+  <Resource id="amqpsRA" type="AMQPSJMSRA" provider="com.wk.ra:amqpsra" />
 
    <Container id="mdbContainer" ctype="MESSAGE">
        ResourceAdapter = amqpsRA
