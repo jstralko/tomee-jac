@@ -24,7 +24,7 @@ mvn clean install
 cp -v target/*.rar ../ra.rar
 popd
 
-jar -cvf wk-amsp.jar META-INF
+jar -cvf amqps-service-info.jar META-INF
 
 docker stop $(docker ps | grep tomee-jac | tail -n 1 | awk '{ print $1 }')
 docker build -t tomee-jac .

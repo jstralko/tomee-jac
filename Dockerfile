@@ -23,7 +23,7 @@
 
 COPY tomee.xml /usr/local/tomee/conf
 COPY system.properties /usr/local/tomee/conf
-COPY wk-amsp.jar /usr/local/tomee/lib
+COPY amqps-service-info.jar /usr/local/tomee/lib
 COPY setenv.sh /usr/local/tomee/bin
 
 # Should be generic-jms-ra (we have manually changes)
