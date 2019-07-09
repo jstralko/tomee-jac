@@ -10,7 +10,6 @@ import java.util.logging.Logger;
 @MessageDriven(
     mappedName = "QUEUE/MyQueue",
     activationConfig = {
-        @ActivationConfigProperty(propertyName = "connectionFactory", propertyValue = "SBCF"),
         @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue") 
     }
 )

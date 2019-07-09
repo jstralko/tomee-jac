@@ -216,7 +216,7 @@ public class JmsActivation implements ExceptionListener {
         return str != null && str.length() > 0;
     }
 
-    private static String get(String str, String envVar) {
+    public static String get(String str, String envVar) {
         if (!isSet(str)) {
             str = System.getProperty(envVar);
             if (!isSet(str)) {

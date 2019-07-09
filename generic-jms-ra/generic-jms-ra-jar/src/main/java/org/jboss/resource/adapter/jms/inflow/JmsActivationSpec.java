@@ -456,7 +456,10 @@ public class JmsActivationSpec implements ActivationSpec {
         }
 
         if (connectionFactory == null || connectionFactory.trim().equals("")) {
-            throw new InvalidPropertyException("connectionFactory is mandatory");
+            connectionFactory = JmsActivation.get(connectionFactory, "CONNECTION_FACTORY");
+            if (connectionFactory == null || connectionFactory.trim().equals("")) {
+                throw new InvalidPropertyException("connectionFactory is mandatory");
+            }
         }
     }
 
