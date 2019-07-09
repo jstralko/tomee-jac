@@ -9,6 +9,7 @@ target
 .vscode
 bin
 rar-libs/*.jar
-wk-amsp.jar
+*.jar
 *.rar
 .factorypath
+setenv.sh

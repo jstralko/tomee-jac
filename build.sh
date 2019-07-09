@@ -13,6 +13,7 @@ rm rar-libs/*.jar 2>/dev/null
 rm *.rar 2>/dev/null
 
 pushd generic-jms-ra
+#TODO: fix so we dont have to skipTests
 mvn clean install -DskipTests
 [ $? -eq 0 ] || exit $?;
 cp -v generic-jms-ra-jar/target/*Final.jar ../rar-libs
