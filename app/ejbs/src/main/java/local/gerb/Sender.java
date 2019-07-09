@@ -1,6 +1,7 @@
 package local.gerb;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 import javax.ejb.EJBException;
 import javax.ejb.Stateless;
 import javax.jms.Connection;
@@ -19,8 +20,10 @@ import java.util.Properties;
 @Stateless
 public class Sender {
 
+    @Resource
     private ConnectionFactory connectionFactory;
 
+    @Resource
     private Queue myQueue;
 
     private String userName;
@@ -29,9 +32,16 @@ public class Sender {
 
     @PostConstruct
     public void onPostConstruct() {
+
+        if (connectionFactory != null) {
+            //Assume we are using the builtin ActiveMQ Broker
+            return;
+        }
+
+        //Azure Service Bus (AMQPS)
         String jndiParameters = System.getProperty("JNDI_PARAMETERS");
         if (jndiParameters == null) {
-            throw new EJBException("No JNDI_PARAMETERS found!");
+            throw new EJBException("JNDI_PARAMETERS not found!");
         }
 
         try {
